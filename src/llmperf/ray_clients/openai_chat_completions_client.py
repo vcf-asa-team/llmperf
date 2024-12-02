@@ -20,8 +20,8 @@ class OpenAIChatCompletionsClient(LLMClient):
         prompt, prompt_len = prompt
 
         message = [
-            {"role": "system", "content": ""},
             {"role": "user", "content": prompt},
+            {"role": "assistant", "content": "How can I help you today?"},
         ]
         model = request_config.model
         body = {
@@ -53,7 +53,8 @@ class OpenAIChatCompletionsClient(LLMClient):
         key = os.environ.get("OPENAI_API_KEY")
         if not key:
             raise ValueError("the environment variable OPENAI_API_KEY must be set.")
-        headers = {"Authorization": f"Bearer {key}"}
+        # headers = {"Authorization": f"Bearer {key}"}
+        headers = {"accept": "application/json", "Content-Type": "application/json"}
         if not address:
             raise ValueError("No host provided.")
         if not address.endswith("/"):
