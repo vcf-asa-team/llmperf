@@ -37,6 +37,15 @@ To run the most basic load test you can the token_benchmark_ray script.
 - The results may vary with the load.
 - The results may not correlate with users’ workloads.
 
+### Batch Config Runs
+
+Use --batch-config-file to run a series of tests with different parameters.  Use the batch_config.yaml as a template to test multiple settings.
+
+```bash
+export OPEN_API_BASE="https://api.endpoints.anyscale.com/v1"
+python3 token_benchmark_ray.py --batch-config-file batch_config.yaml
+```
+
 ### OpenAI Compatible APIs
 ```bash
 export OPENAI_API_KEY=secret_abcdefg
